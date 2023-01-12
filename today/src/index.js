@@ -10,14 +10,15 @@ app.get('/', (req, res) => {
 app.get('/todos', (req, res) => {
   axios.get("https://jsonplaceholder.typicode.com/posts")
     .then(response => {
-      console.log(response.data)
+      res.json(response.data)
     })
     .catch(err => {
       console.log(err)
+      res.sendStatus(500)
     })
-
-  res.send('1234')
 })
+
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
